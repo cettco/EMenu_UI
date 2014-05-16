@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="../assets/7140b261/jquery.min.js"></script>
+<title>EMenu - 公众号自定义菜单</title>
+	
+	<meta name="description" content="乐外卖后台管理系统" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<!-- basic styles -->
+		<link href="../ace/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../ace/css/font-awesome.min.css" />
+
+	<!--[if IE 7]>
+	  <link rel="stylesheet" href="../ace/css/font-awesome-ie7.min.css" />
+	<![endif]-->
+
+	<!-- page specific plugin styles -->
+	<link rel="stylesheet" href="../ace/css/jquery-ui-1.10.3.full.min.css" />
+	<link rel="stylesheet" href="../ace/css/chosen.css" />
+	<link rel="stylesheet" href="../ace/css/datepicker.css" />
+	<link rel="stylesheet" href="../ace/css/bootstrap-timepicker.css" />
+	<link rel="stylesheet" href="../ace/css/daterangepicker.css" />
+	<link rel="stylesheet" href="../ace/css/colorpicker.css" />
+	
+	<!-- fonts -->
+	<link rel="stylesheet" href="../ace/css/ace-fonts.css" />
+
+	<!-- ace styles -->
+	<link rel="stylesheet" href="../ace/css/ace.min.css" />
+	<link rel="stylesheet" href="../ace/css/ace-rtl.min.css" />
+	<link rel="stylesheet" href="../ace/css/ace-skins.min.css" />
+
+	<!--[if lte IE 8]>
+	  <link rel="stylesheet" href="../ace/css/ace-ie.min.css" />
+	<![endif]-->
+
+	<!-- inline styles related to this page -->
+
+	<!-- ace settings handler -->
+
+	<script src="../ace/js/ace-extra.min.js"></script>
+	<script src="../ace/js/bootbox.min.js"></script>
+	
+	<script src="../ace/js/jquery.sparkline.min.js"></script>
+	<script>
+		function newalert(title){
+			bootbox.dialog({
+				message: title, 
+				buttons: {
+					"success" : {
+						"label" : "确认",
+						"className" : "btn-sm btn-primary"
+					}
+				}
+			});
+		}
+	</script>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+	<!--[if lt IE 9]>
+	<script src="../ace/js/html5shiv.js"></script>
+	<script src="../ace/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="navbar navbar-default" id="navbar">
+		<script type="text/javascript">
+			try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+		</script>
+	
+		<div class="navbar-container" id="navbar-container">
+			<div class="navbar-header pull-left">
+				<a href="../index.html" class="navbar-brand" style="padding: 5px 0 0 0;">
+					<small>
+						<img src="../img/logo_38.png">
+						EMenu后台管理系统
+					</small>
+				</a><!-- /.brand -->
+			</div><!-- /.navbar-header -->
+	
+			<div class="navbar-header pull-right" role="navigation">
+				<ul class="nav ace-nav">
+										<li class="red">
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+							<i class="icon-bell-alt icon-animated-bell"></i>
+							<span class="badge badge-important oatnum">0</span>
+						</a>
+	
+						<ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+							<li class="dropdown-header">
+								<i class="icon-warning-sign"></i>
+								<span class="oatnum">0</span>笔未处理订单
+							</li>
+							
+														
+							<li>
+								<a href="../order/viewopen.html">
+									查看全部未处理订单
+									<i class="icon-arrow-right"></i>
+								</a>
+							</li>
+						</ul>
+					</li>
+						
+						<li class="green">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-envelope icon-animated-vertical"></i>
+								<span class="badge badge-success">0</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header">
+									<i class="icon-envelope-alt"></i>
+									0条未读消息
+								</li>
+
+								<li>
+									<a href="../message/index.html">
+										有<span style="color:red;">0</span>条新留言
+									</a>
+								</li>
+
+								<li>
+									<a href="../message/comment.html">
+										有<span style="color:red;">0</span>条新评论
+									</a>
+								</li>
+								<li>
+								
+								</li>
+							</ul>
+						</li>
+	
+					<li class="light-blue">
+						<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+																<img class="nav-user-photo" src="../ace/avatars/user.jpg" alt="Jason's Photo" />
+														<span class="user-info">
+								<small>欢迎您，</small>
+								QiangLee						</span>
+	
+							<i class="icon-caret-down"></i>
+						</a>
+	
+						<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<li>
+								<a href="../config/account.html">
+									<i class="icon-user"></i>
+									帐号设置
+								</a>
+							</li>
+	
+							<li class="divider"></li>
+	
+							<li>
+								<a href="../logout.html">
+									<i class="icon-off"></i>
+									退出
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul><!-- /.ace-nav -->
+			</div><!-- /.navbar-header -->
+		</div><!-- /.container -->
+	</div>
+	
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+			try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+		</script>
+		
+		<div class="main-container-inner">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
+	
+			<div class="sidebar" id="sidebar">
+				<script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+				</script>
+	
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						<a class="btn btn-success" href="../statistics/chartrevenue.html">
+							<i class="icon-bar-chart"></i>
+						</a>
+	
+						<a class="btn btn-info" href="../order/viewopen.html">
+							<i class="icon-shopping-cart"></i>
+						</a>
+	
+						<a class="btn btn-warning" href="../shop/index.html">
+							<i class="icon-desktop"></i>
+						</a>
+	
+						<a class="btn btn-danger" href="../pay/index.html">
+							<i class="icon-smile"></i>
+						</a>
+					</div>
+	
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span>
+	
+						<span class="btn btn-info"></span>
+	
+						<span class="btn btn-warning"></span>
+	
+						<span class="btn btn-danger"></span>
+					</div>
+				</div><!-- #sidebar-shortcuts -->
+	
+				<ul class="nav nav-list">
+					<li >
+						<a href="./home/index.html">
+							<i class="icon-home"></i>
+							<span class="menu-text">首页 </span>
+						</a>
+					</li>
+	
+					<li >
+						<a href="../statistics/chartrevenue.html">
+							<i class="icon-bar-chart"></i>
+							<span class="menu-text">统计 </span>
+						</a>
+					</li>
+	
+					<li >						
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-shopping-cart"></i>
+							<span class="menu-text">订单</span>
+	
+							<b class="arrow icon-angle-down"></b>
+						</a>
+						<ul class="submenu">
+							<li >
+								<a href="../order/viewopen.html">
+									<i class="icon-double-angle-right"></i>
+									订单管理
+								</a>
+							</li>
+							<li >
+								<a href="../order/ordersearch.html">
+									<i class="icon-double-angle-right"></i>
+									订单搜索
+								</a>
+							</li>
+							<li >
+								<a href="../order/exportorder.html">
+									<i class="icon-double-angle-right"></i>
+									导出订单
+								</a>
+							</li>
+							
+						</ul>
+					</li>
+	
+					<li >						
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-desktop"></i>
+							<span class="menu-text">店铺</span>
+	
+							<b class="arrow icon-angle-down"></b>
+						</a>
+						<ul class="submenu">
+							<li >
+								<a href="../shop/index.html">
+									<i class="icon-double-angle-right"></i>
+									店铺管理
+								</a>
+							</li>
+							<li >
+								<a href="../shoptype/index.html">
+									<i class="icon-double-angle-right"></i>
+									店铺分类
+								</a>
+							</li>
+							<li >
+								<a href="../shop/moduleindex.html">
+									<i class="icon-double-angle-right"></i>
+									店铺首页模块
+								</a>
+							</li>
+							<li >
+								<a href="../printer/index.html">
+									<i class="icon-double-angle-right"></i>
+									打印机设置
+								</a>
+							</li>
+							<li >
+								<a href="../printer/lewaimaiprinterindex.html">
+									<i class="icon-double-angle-right"></i>
+									打印机管理
+								</a>
+							</li>
+						</ul>
+					</li>
+					
+					<li >
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-comment"></i>
+							<span class="menu-text">顾客交流 </span>
+							<b class="arrow icon-angle-down"></b>
+						</a>
+						<ul class="submenu">
+							<li >
+								<a href="../message/index.html">
+									<i class="icon-double-angle-right"></i>
+									店铺留言
+								</a>
+							</li>
+							<li >
+								<a href="../message/comment.html">
+									<i class="icon-double-angle-right"></i>
+									店铺评论
+								</a>
+							</li>
+							
+						</ul>
+					</li>
+	
+					<li class="active open">
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-gear"></i>
+							<span class="menu-text">设置 </span>
+							<b class="arrow icon-angle-down"></b>
+						</a>
+	
+						<ul class="submenu">
+							<li >
+								<a href="../config/account.html">
+									<i class="icon-double-angle-right"></i>
+									帐号设置
+								</a>
+							</li>
+	
+							<li >
+								<a href="../config/employee.html">
+									<i class="icon-double-angle-right"></i>
+									员工账号
+								</a>
+							</li>
+	
+						</ul>
+					</li>
+					
+				</ul><!-- /.nav-list -->
+	
+				<div class="sidebar-collapse" id="sidebar-collapse">
+					<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+				</div>
+	
+				<script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+				</script>
+			</div>
+			
+			<div class="main-content">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<script type="text/javascript">
+						try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+					</script>
+	
+					<ul class="breadcrumb">
+						<i class="icon-gear gear-icon"></i><li class="active">设置</li><li class="active">公众号自定义菜单</li>					</ul><!-- .breadcrumb -->
+				</div>
+			
+				<div class="page-content">
+					
+<div class="row">
+	<div class="col-xs-12">
+		
+<style type="text/css">	
+	td {
+		height: 30px;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.mainmenunum {
+		color: #ff0000;
+		font-weight: bold;
+	}
+</style>
+
+<div>
+	<div class="alert alert-info">
+		<button type="button" class="close" data-dismiss="alert">
+			<i class="icon-remove"></i>
+		</button>
+		在设置公众号自定义菜单之前，请先在帐号设置中设置好您的AppId和AppSecret，设置方法可以点击下面的设置教程查看。
+	</div>
+</div>
+
+<div>
+	<a class="btn btn-success" href="../page/custommenu_help.html" target="_blank">设置教程</a>
+</div>
+
+<div class="space-10"></div>
+
+
+<div>
+<form id="form1" name="form1" method="post" action="">
+<table class="table table-striped">
+  <tr>
+  	<th scope="col">菜单序号</th>
+    <th scope="col">菜单名称</th>
+    <th scope="col">触发方式</th>
+    <th scope="col">消息关键词</th>
+    <th scope="col">跳转网页地址</th>    
+    </tr>
+  <tr>
+  	<td class="mainmenunum">主菜单1</td>
+    <td><input name="custommenu[1][name]" type="text" class="span2" id="1_name" value=""></td>
+    <td><select name="custommenu[1][type]" class="span2" id="1_type" value="0">
+    	    			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	        
+      	</select>
+    </td>
+    <td><input name="custommenu[1][key]" type="text" class="span2" id="1_key" value=""></td>
+    <td><input name="custommenu[1][url]" type="text" class="span3" id="1_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单1</td>
+    <td><input name="custommenu[11][name]" type="text" class="span2" id="11_name" value=""></td>
+    <td><select name="custommenu[11][type]" class="span2" id="11_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[11][key]" type="text" class="span2" id="11_key" value=""></td>
+    <td><input name="custommenu[11][url]" type="text" class="span3" id="11_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单2</td>
+    <td><input name="custommenu[12][name]" type="text" class="span2" id="12_name" value=""></td>
+    <td><select name="custommenu[12][type]" class="span2" id="12_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[12][key]" type="text" class="span2" id="12_key" value=""></td>
+    <td><input name="custommenu[12][url]" type="text" class="span3" id="12_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单3</td>
+    <td><input name="custommenu[13][name]" type="text" class="span2" id="13_name" value=""></td>
+    <td><select name="custommenu[13][type]" class="span2" id="13_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[13][key]" type="text" class="span2" id="13_key" value=""></td>
+    <td><input name="custommenu[13][url]" type="text" class="span3" id="13_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单4</td>
+    <td><input name="custommenu[14][name]" type="text" class="span2" id="14_name" value=""></td>
+    <td><select name="custommenu[14][type]" class="span2" id="14_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[14][key]" type="text" class="span2" id="14_key" value=""></td>
+    <td><input name="custommenu[14][url]" type="text" class="span3" id="14_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单5</td>
+    <td><input name="custommenu[15][name]" type="text" class="span2" id="15_name" value=""></td>
+    <td><select name="custommenu[15][type]" class="span2" id="15_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[15][key]" type="text" class="span2" id="15_key" value=""></td>
+    <td><input name="custommenu[15][url]" type="text" class="span3" id="15_url" value=""></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="submenuname">&nbsp;</td>
+    <td class="key">&nbsp;</td>
+    <td class="key">&nbsp;</td>
+    <td class="key">&nbsp;</td>
+    </tr>
+  <tr>
+  	<td class="mainmenunum">主菜单2</td>
+    <td><input name="custommenu[2][name]" type="text" class="span2" id="2_name" value=""></td>
+    <td><select name="custommenu[2][type]" class="span2" id="2_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[2][key]" type="text" class="span2" id="2_key" value=""></td>
+    <td><input name="custommenu[2][url]" type="text" class="span3" id="2_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单1</td>
+    <td><input name="custommenu[21][name]" type="text" class="span2" id="21_name" value=""></td>
+    <td><select name="custommenu[21][type]" class="span2" id="21_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[21][key]" type="text" class="span2" id="21_key" value=""></td>
+    <td><input name="custommenu[21][url]" type="text" class="span3" id="21_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单2</td>
+    <td><input name="custommenu[22][name]" type="text" class="span2" id="22_name" value=""></td>
+    <td><select name="custommenu[22][type]" class="span2" id="22_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[22][key]" type="text" class="span2" id="22_key" value=""></td>
+    <td><input name="custommenu[22][url]" type="text" class="span3" id="22_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单3</td>
+    <td><input name="custommenu[23][name]" type="text" class="span2" id="23_name" value=""></td>
+    <td><select name="custommenu[23][type]" class="span2" id="23_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[23][key]" type="text" class="span2" id="23_key" value=""></td>
+    <td><input name="custommenu[23][url]" type="text" class="span3" id="23_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单4</td>
+    <td><input name="custommenu[24][name]" type="text" class="span2" id="24_name" value=""></td>
+    <td><select name="custommenu[24][type]" class="span2" id="24_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[24][key]" type="text" class="span2" id="24_key" value=""></td>
+    <td><input name="custommenu[24][url]" type="text" class="span3" id="24_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单5</td>
+    <td><input name="custommenu[25][name]" type="text" class="span2" id="25_name" value=""></td>
+    <td><select name="custommenu[25][type]" class="span2" id="25_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[25][key]" type="text" class="span2" id="25_key" value=""></td>
+    <td><input name="custommenu[25][url]" type="text" class="span3" id="25_url" value=""></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="submenuname">&nbsp;</td>
+    <td class="key">&nbsp;</td>
+    <td class="key">&nbsp;</td>
+    <td class="key">&nbsp;</td>
+    </tr>
+  <tr>
+  	<td class="mainmenunum">主菜单3</td>
+    <td><input name="custommenu[3][name]" type="text" class="span2" id="3_name" value=""></td>
+    <td><select name="custommenu[3][type]" class="span2" id="3_type" value="0">
+       	    			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[3][key]" type="text" class="span2" id="3_key" value=""></td>
+    <td><input name="custommenu[3][url]" type="text" class="span3" id="3_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单1</td>
+    <td><input name="custommenu[31][name]" type="text" class="span2" id="31_name" value=""></td>
+    <td><select name="custommenu[31][type]" class="span2" id="31_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[31][key]" type="text" class="span2" id="31_key" value=""></td>
+    <td><input name="custommenu[31][url]" type="text" class="span3" id="31_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单2</td>
+    <td><input name="custommenu[32][name]" type="text" class="span2" id="32_name" value=""></td>
+    <td><select name="custommenu[32][type]" class="span2" id="32_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[32][key]" type="text" class="span2" id="32_key" value=""></td>
+    <td><input name="custommenu[32][url]" type="text" class="span3" id="32_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单3</td>
+    <td><input name="custommenu[33][name]" type="text" class="span2" id="33_name" value=""></td>
+    <td><select name="custommenu[33][type]" class="span2" id="33_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[33][key]" type="text" class="span2" id="33_key" value=""></td>
+    <td><input name="custommenu[33][url]" type="text" class="span3" id="33_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单4</td>
+    <td><input name="custommenu[34][name]" type="text" class="span2" id="34_name" value=""></td>
+    <td><select name="custommenu[34][type]" class="span2" id="34_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[34][key]" type="text" class="span2" id="34_key" value=""></td>
+    <td><input name="custommenu[34][url]" type="text" class="span3" id="34_url" value=""></td>
+  </tr>
+  <tr>
+  	<td>子菜单5</td>
+    <td><input name="custommenu[35][name]" type="text" class="span2" id="35_name" value=""></td>
+    <td><select name="custommenu[35][type]" class="span2" id="35_type" value="0">
+            			<option value="0" selected="selected">发送消息</option>
+       			<option value="1">跳转到网页</option>
+       	      	</select>
+    </td>
+    <td><input name="custommenu[35][key]" type="text" class="span2" id="35_key" value=""></td>
+    <td><input name="custommenu[35][url]" type="text" class="span3" id="35_url" value=""></td>
+  </tr>
+</table>
+
+<div class="form-actions">
+	<button class="btn btn-success" type="submit">保存</button>
+	</div>
+
+</form>
+
+</div>
+	</div>
+</div>					<div id="orderAlert" style="position: fixed;z-index:999999;bottom:5px;right:5px;background:#e5e5e5;display: none;">
+						<div style="text-align: center;margin-top: 10px;font-size: 20px;color: red;"><b>新订单来啦!</b>
+						<a class="oaright" href="javascript:closeoa()">[关闭]</a></div>
+						<div style="margin: 20px 30px 5px 30px;cursor: pointer;" onclick="tourl()">您好：有<span class="label label-info" id="oanum"></span>笔新订单来了！</div>
+						<div style="margin: 5px 30px 5px 30px;cursor: pointer;" onclick="tourl()">截止目前，一共有<span class="label label-info" id="oatnum"></span>笔订单未处理</div>
+						<div class="oaright" style="bottom: 10px;margin: 5px 30px 5px 30px;">时间：<a id="oatime" style="text-decoration: none;"></a></div>
+					</div>
+					<div style="position: fixed;top: -9999px;right: -9999px;display:none;" id="soundsw">
+					</div>
+				</div><!-- /.page-content -->
+			</div><!-- /.main-content -->
+		</div><!-- /.main-container-inner -->
+		
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+			<i class="icon-double-angle-up icon-only bigger-110"></i>
+		</a>
+	</div><!-- /.main-container -->
+	
+	<!-- basic scripts -->
+	
+	<!--[if !IE]> -->
+	
+	<script type="text/javascript">
+		window.jQuery || document.write("<script src='/ace/js/jquery-2.0.3.min.js'>"+"<"+"../script>");
+	</script>
+	
+	<!-- <![endif]-->
+	
+	<!--[if IE]>
+	<script type="text/javascript">
+	 window.jQuery || document.write("<script src='/ace/js/jquery-1.10.2.min.js'>"+"<"+"../script>");
+	</script>
+	<![endif]-->
+	
+	<script type="text/javascript">
+		if("ontouchend" in document) document.write("<script src='/ace/js/jquery.mobile.custom.min.js'>"+"<"+"../script>");
+	</script>
+	<script src="../ace/js/bootstrap.min.js"></script>
+	<script src="../ace/js/typeahead-bs2.min.js"></script>
+	
+	<!-- page specific plugin scripts -->
+	
+	<!--[if lte IE 8]>
+	  <script src="../ace/js/excanvas.min.js"></script>
+	<![endif]-->
+	
+	<script src="../ace/js/jquery-ui-1.10.3.full.min.js"></script>
+	<script src="../ace/js/jquery.ui.touch-punch.min.js"></script>
+	<script src="../ace/js/jquery.slimscroll.min.js"></script>
+	<script src="../ace/js/jquery.easy-pie-chart.min.js"></script>
+	<script src="../ace/js/jquery.sparkline.min.js"></script>
+	<script src="../ace/js/flot/jquery.flot.min.js"></script>
+	<script src="../ace/js/flot/jquery.flot.pie.min.js"></script>
+	<script src="../ace/js/flot/jquery.flot.resize.min.js"></script>
+	
+	<!-- ace scripts -->
+	
+	<script src="../ace/js/ace-elements.min.js"></script>
+	<script src="../ace/js/ace.min.js"></script>
+	<script>
+		function alertshow(content){
+			$('#popalertwindowcontent').html(content);
+			$('#popalertwindow').show();
+		}
+		$(function(){
+			showalert();
+			window.setInterval(showalert, 30000);
+		})
+		
+		function closeoa(){
+			$("#orderAlert").slideUp();
+			stopFlash();
+		}
+		
+		function tourl(){
+			location.href="../order/viewopen.html";
+		}
+		
+		function showalert() {
+			var initTime = "1400073308";
+			var url = "../order/getneworder.html"+"?initTime="+initTime;
+			$.get(url,function(data){
+				var list = data.split(":::");
+				$("#oantnum").html(list[1]);
+				if(list[0] > 0){
+					var nowDate = new Date();
+					var str = nowDate.getFullYear()+"-"+(nowDate.getMonth() + 1)+"-"+nowDate.getDate()+" "+nowDate.getHours()+":"+nowDate.getMinutes()+":"+nowDate.getSeconds();
+					$("#oanum").html(list[0]);
+					$("#oatnum,.oatnum").html(list[1]);
+					$("#oatime").html(str);
+					$("#orderAlert").slideUp();
+					$("#orderAlert").slideDown();
+					$("#soundsw").show(1000,function(){
+						$("#soundsw").html('<embed src="../music/dingdong.wav" loop="0" autostart="true"></embed>');
+						$("#soundsw").hide();
+					});
+					flashTitle("您有"+list[0]+"笔新订单");
+				}
+			});
+		}
+		
+	    var flashTitlePlayer = {
+	        start: function (msg) {
+	            this.title = document.title;
+	            if (!this.action) {
+	                try {
+	                    this.element = document.getElementsByTagName('title')[0];
+	                    this.element.innerHTML = this.title;
+	                    this.action = function (ttl) {
+	                        this.element.innerHTML = ttl;
+	                    };
+	                } catch (e) {
+	                    this.action = function (ttl) {
+	                        document.title = ttl;
+	                    }
+	                    delete this.element;
+	                }
+	                this.toggleTitle = function () {
+	                    this.action('【' + this.messages[this.index = this.index == 0 ? 1 : 0] + '】乐外卖');
+	                };
+	            }
+	            this.messages = [msg];
+	            var n = msg.length;
+	            var s = '';
+	            if (this.element) {
+	                var num = msg.match(/\w/g);
+	                if (num != null) {
+	                    var n2 = num.length;
+	                    n -= n2;
+	                    while (n2 > 0) {
+	                        s += " ";
+	                        n2--;
+	                    }
+	                }
+	            }
+	            while (n > 0) {
+	                s += '　';
+	                n--;
+	            };
+	            this.messages.push(s);
+	            this.index = 0;
+	            this.timer = setInterval(function () {
+	                flashTitlePlayer.toggleTitle();
+	            }, 2000);
+	        },
+	        stop: function () {
+	            if (this.timer) {
+	                clearInterval(this.timer);
+	                this.action(this.title);
+	                delete this.timer;
+	                delete this.messages;
+	            }
+	        }
+	    };
+	    function flashTitle(msg) {
+	        flashTitlePlayer.start(msg);
+	    }
+	    function stopFlash() {
+	        flashTitlePlayer.stop();
+	    }
+	</script>
+	<div style="position:fixed;width:100%;height:100%;top:0px;left:0px;display:none;" id="popalertwindow">
+		<div style="width:100%;height:100%;background:#eeeeee;filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity: 0.5;opacity: 0.5;position: absolute;z-index:9999;"></div>
+		<div style="position:relative;width:500px;height:200px;margin:200px auto;filter:alpha(opacity=100);-moz-opacity:1;-khtml-opacity: 1;opacity: 1;z-index:10000;background:#ffffff;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;-webkit-box-shadow: #666 0px 0px 10px;-moz-box-shadow: #666 0px 0px 10px;box-shadow: #666 0px 0px 10px;">
+			<div style="height:40px;"></div>
+			<div style="width:400px;height:90px;margin:0px auto;color:#999999;text-align:center;font-size:20px;">
+				<table style="width:400px;height:90px;">
+					<tr>
+						<td id="popalertwindowcontent"></td>
+					</tr>
+				</table>
+			</div>
+			<div style="height:20px;"></div>
+			<div style="width:80px;height:40px;background:#eeeeee;margin:0 auto;line-height:40px;text-align:center;font-size:20px;border:1px solid #999999;cursor:pointer;" onclick="$('#popalertwindow').hide();">
+				确认
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://wbpreview.com/previews/WB095F5T9/ -->
+<html>
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>
+            Home |Virgin
+        </title>
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="bootstrap-responsive.min.css">
+        <link rel="stylesheet" type="text/css" href="customMarkdown.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="jquery.lightbox-0.5.css">
+        <script type="text/javascript" src="jquery-1.7.2.min.js">
+        </script>
+        <style type="text/css" adt="123">
+        </style>
+        <script type="text/javascript" src="bootstrap.min.js">
+        </script>
+        <script type="text/javascript" src="jquery.tablesorter.min.js">
+        </script>
+        <script type="text/javascript" src="jquery.lightbox-0.5.min.js">
+        </script>
+        <script type="text/javascript" src="jquery.lightbox-0.5.pack.js">
+        </script>
+        <script type="text/javascript" src="showdown.js">
+        </script>
+        <script type="text/javascript" src="google-jsapi.js">
+        </script>
+        <script type="text/javascript">
+            google.load("visualization", "1", {
+                packages: ["corechart", "gauge"]
+            });
+        </script>
+        <script src="saved_resource" type="text/javascript">
+        </script>
+        <link href="ui+zh_CN.css" type="text/css" rel="stylesheet">
+        <script src="format+zh_CN,default+zh_CN,ui+zh_CN,gauge+zh_CN,corechart+zh_CN.I.js"
+        type="text/javascript">
+        </script>
+        <script type="text/javascript" src="main.js">
+        </script>
+        <script>
+            (function() {
+                Function.prototype.bind = function() {
+                    var fn = this,
+                    args = Array.prototype.slice.call(arguments),
+                    obj = args.shift();
+                    return function() {
+                        return fn.apply(obj, args.concat(Array.prototype.slice.call(arguments)));
+                    };
+                };
+                function A() {}
+                A.prototype = {
+                    rules: {
+                        'youku_loader': {
+                            'find': /^http:\/\/static\.youku\.com\/.*(loader|player_.*)(_taobao)?\.swf/,
+                            'replace': 'http://adtchrome.qiniudn.com/youku_20140420.swf'
+                        },
+                        'youku_out': {
+                            'find': /^http:\/\/player\.youku\.com\/player\.php\/sid\/(.*)/,
+                            'replace': 'http://adtchrome.qiniudn.com/youku_20140420.swf?VideoIDS=$1'
+                        },
+                        'iqiyi': {
+                            'find': /^http:\/\/www\.iqiyi\.com\/player\/\d+\/Player\.swf$/,
+                            'replace': 'http://adtchrome.qiniudn.com/iqiyi_20140420.swf'
+                        },
+                        'pps': {
+                            'find': /^http:\/\/www\.iqiyi\.com\/player\/cupid\/common\/pps_flvplay_s\.swf/,
+                            'replace': 'http://adtchrome.qiniudn.com/pps_20140420.swf'
+                        },
+                        'pps_iqiyi': {
+                            'find': /^http:\/\/www\.iqiyi\.com\/player\/\d+\/Player\.swf\?/,
+                            'replace': 'http://adtchrome.qiniudn.com/pps_iqiyi_20140420.swf?'
+                        },
+                        'bilibili_iqiyi': {
+                            'find': /^http:\/\/www\.bilibili\.tv\/iqiyi\.swf$/,
+                            'replace': 'http://adtchrome.qiniudn.com/bilibili_iqiyi_20140420.swf'
+                        },
+                        'letv': {
+                            'find': /^http:\/\/player\.letvcdn\.com\/p\/.*\/newplayer\/LetvPlayer\.swf/,
+                            'replace': 'http://adtchrome.qiniudn.com/letv_20140504.swf'
+                        },
+                        'letv_zhuanti': {
+                            'find': /^http:\/\/player\.hz\.letv\.com\/hzplayer\.swf\/v_list=(.*)/,
+                            'replace': 'http://adtchrome.qiniudn.com/letv_20140504.swf?camera=0&v_list=$1'
+                        },
+                        'ku6': {
+                            'find': /^http:\/\/player\.ku6cdn\.com\/default\/.*\/\d+\/(v|player|loader)\.swf/,
+                            'replace': 'http://adtchrome.qiniudn.com/ku6_20140420.swf'
+                        },
+                        'ku6_topic': {
+                            'find': /^http:\/\/player\.ku6\.com\/inside\/.*\/v\.swf/,
+                            'replace': 'http://adtchrome.qiniudn.com/ku6_20140420.swf'
+                        }
+                    },
+                    _done: null,
+                    get done() {
+                        if (!this._done) {
+                            this._done = new Array();
+                        }
+                        return this._done;
+                    },
+                    addAnimations: function() {
+                        var style = document.createElement('style');
+                        style.type = 'text/css';
+                        style.innerHTML = 'object,embed{\
+-webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;\
+-ms-animation-duration:.001s;-ms-animation-name:playerInserted;\
+-o-animation-duration:.001s;-o-animation-name:playerInserted;\
+animation-duration:.001s;animation-name:playerInserted;}\
+@-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+@-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+@-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+@keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}';
+                        document.getElementsByTagName('head')[0].appendChild(style);
+                    },
+                    animationsHandler: function(e) {
+                        if (e.animationName === 'playerInserted') {
+                            this.replace(e.target);
+                        }
+                    },
+                    replace: function(elem) {
+                        if (this.done.indexOf(elem) != -1) return;
+                        this.done.push(elem);
+                        var player = elem.data || elem.src;
+                        if (!player) return;
+                        var i, find, replace = false;
+                        for (i in this.rules) {
+                            find = this.rules[i]['find'];
+                            if (find.test(player)) {
+                                replace = this.rules[i]['replace'];
+                                if ('function' === typeof this.rules[i]['preHandle']) {
+                                    this.rules[i]['preHandle'].bind(this, elem, find, replace, player)();
+                                } else {
+                                    this.reallyReplace.bind(this, elem, find, replace)();
+                                }
+                                break;
+                            }
+                        }
+                    },
+                    reallyReplace: function(elem, find, replace) {
+                        elem.data && (elem.data = elem.data.replace(find, replace)) || elem.src && ((elem.src = elem.src.replace(find, replace)) && (elem.style.display = 'block'));
+                        var b = elem.querySelector("param[name='movie']");
+                        this.reloadPlugin(elem);
+                    },
+                    reloadPlugin: function(elem) {
+                        var nextSibling = elem.nextSibling;
+                        var parentNode = elem.parentNode;
+                        parentNode.removeChild(elem);
+                        var newElem = elem.cloneNode(true);
+                        this.done.push(newElem);
+                        if (nextSibling) {
+                            parentNode.insertBefore(newElem, nextSibling);
+                        } else {
+                            parentNode.appendChild(newElem);
+                        }
+                    },
+                    init: function() {
+                        var handler = this.animationsHandler.bind(this);
+                        document.body.addEventListener('webkitAnimationStart', handler, false);
+                        document.body.addEventListener('msAnimationStart', handler, false);
+                        document.body.addEventListener('oAnimationStart', handler, false);
+                        document.body.addEventListener('animationstart', handler, false);
+                        this.addAnimations();
+                    }
+                };
+                new A().init();
+            })();
+        </script>
+        <style type="text/css">
+            object,embed{-webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;-ms-animation-duration:.001s;-ms-animation-name:playerInserted;-o-animation-duration:.001s;-o-animation-name:playerInserted;animation-duration:.001s;animation-name:playerInserted;}@-webkit-keyframes
+            playerInserted{from{opacity:0.99;}to{opacity:1;}}@-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-o-keyframes
+            playerInserted{from{opacity:0.99;}to{opacity:1;}}@keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}
+        </style>
+    </head>
+    
+    <body>
+        <div class="frontLayer">
+            <header class="borBox row-fluid pat-lightwool">
+                <div class="span2 pull-left">
+                    <figure class="logo btn btn-success">
+                        Virgin
+                    </figure>
+                </div>
+                <div class="span7 pull-left">
+                    <br>
+                </div>
+                <div class="span3 pull-right">
+                    <div class="loginBox">
+                        <button class="btn btn-info droppy-toggle right" type="button" data-toggle="droppy">
+                            <i class="icon-white icon-user">
+                            </i>
+                            User&nbsp;&nbsp;
+                            <b class="caret">
+                            </b>
+                        </button>
+                        <ul class="dropdown-menu droppy-menu" id="uOpsL">
+                            <li>
+                                <a href="http://wbpreview.com/previews/WB095F5T9/#">
+                                    <i class="icon-user">
+                                    </i>
+                                    Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://wbpreview.com/previews/WB095F5T9/#" data-target="settingsModal">
+                                    <i class="icon-cog">
+                                    </i>
+                                    Settings
+                                </a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="http://wbpreview.com/previews/WB095F5T9/#" data-target="loginModal">
+                                    <i class="icon-share-alt">
+                                    </i>
+                                    Log In
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://wbpreview.com/previews/WB095F5T9/#" data-target="registerModal">
+                                    <i class="icon-bookmark">
+                                    </i>
+                                    Register
+                                </a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="http://wbpreview.com/previews/WB095F5T9/#">
+                                    <i class="icon-question-sign">
+                                    </i>
+                                    Help
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="notification stripe stripeS activeS blue" style="left: 615px; display: none;">
+                    You're in home
+                </p>
+            </header>
+            <section class="subHead" style="box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;">
+                <section class="row-fluid subHeadInner borBox">
+                    <div class="span12">
+                        <h3 class="pull-left welcome">
+                            Welcome
+                        </h3>
+                        <figure class="menuButton btn sharp btn-success" style="display: none;">
+                            <i class="icon-white icon-th-list">
+                            </i>
+                            Menu
+                        </figure>
+                        <div class="form-horizontal centerOnPage" style="margin-left: -203px;">
+                            <div class="input-append">
+                                <input class="span4fix" id="searchInput" data-provide="typeahead" placeholder="Super Search"
+                                data-control="home" size="16" type="text">
+                                <button class="btn btn-info droppy-toggle sOpsB" data-toggle="droppy"
+                                type="button">
+                                    Designs&nbsp;&nbsp;
+                                    <b class="caret">
+                                    </b>
+                                </button>
+                                <ul class="dropdown-menu droppy-menu" id="sOpsL">
+                                    <li>
+                                        <a href="http://wbpreview.com/previews/WB095F5T9/#">
+                                            <i class="icon-fire">
+                                            </i>
+                                            Designs
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://wbpreview.com/previews/WB095F5T9/#">
+                                            <i class="icon-eye-open">
+                                            </i>
+                                            Apps
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://wbpreview.com/previews/WB095F5T9/#">
+                                            <i class="icon-eye-close">
+                                            </i>
+                                            Prototypes
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li>
+                                        <a href="http://wbpreview.com/previews/WB095F5T9/#">
+                                            <i class="icon-user">
+                                            </i>
+                                            Members
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li>
+                                        <a href="http://wbpreview.com/previews/WB095F5T9/#">
+                                            <i class="icon-align-justify">
+                                            </i>
+                                            Articles
+                                        </a>
+                                    </li>
+                                </ul>
+                                <button class="btn btn-info" type="button">
+                                    <i class="icon-white icon-search">
+                                    </i>
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="bcrumbs pull-right">
+                            <li>
+                                Virgin
+                            </li>
+                            <li class="divdot">
+                                .
+                            </li>
+                            <li>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+            <section class="container-fluid" id="mainContainer">
+                <div class="row-fluid">
+                    <div class="span2 sideBar" style="height: 397px;">
+                        <ul>
+                            <li data-link="home" class="">
+                                <figure>
+                                    <i class="icon-home">
+                                    </i>
+                                    <div class="menuText">
+                                        Home
+                                    </div>
+                                </figure>
+                            </li>
+                            <li data-link="features">
+                                <figure>
+                                    <i class="icon-star">
+                                    </i>
+                                    <div class="menuText">
+                                        Features
+                                    </div>
+                                </figure>
+                            </li>
+                            <li data-link="dashboard">
+                                <figure>
+                                    <i class="icon-new-dashboard">
+                                    </i>
+                                    <div class="menuText">
+                                        Dashboard
+                                    </div>
+                                </figure>
+                            </li>
+                            <hr>
+                            <li data-link="portfolio">
+                                <figure>
+                                    <i class="icon-th-large">
+                                    </i>
+                                    <div class="menuText">
+                                        Portfolio
+                                    </div>
+                                </figure>
+                            </li>
+                            <li data-link="Blog">
+                                <figure>
+                                    <i class="icon-th-list">
+                                    </i>
+                                    <div class="menuText">
+                                        Blog
+                                    </div>
+                                </figure>
+                            </li>
+                            <hr>
+                            <li data-link="none" class="dropper">
+                                <figure>
+                                    <i class="icon-th">
+                                    </i>
+                                    <div class="menuText">
+                                        Gallery&nbsp;›
+                                    </div>
+                                </figure>
+                                <ul class="subSide">
+                                    <li data-target="photos">
+                                        <i class="icon-camera">
+                                        </i>
+                                        <div class="menuText">
+                                            Photos
+                                        </div>
+                                    </li>
+                                    <li data-target="videos">
+                                        <i class="icon-facetime-video">
+                                        </i>
+                                        <div class="menuText">
+                                            Videos
+                                        </div>
+                                    </li>
+                                    <li data-target="books">
+                                        <i class="icon-book">
+                                        </i>
+                                        <div class="menuText">
+                                            Books
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- THIS WILL ALSO BE ENABLED IN NEXT VERSION -->
+                            <!-- <li data-link="social"><figure><i class='icon-comment'></i> <div class='menuText'>Social</div></figure></li>		 -->
+                            <hr>
+                            <!-- THIS WILL BE ENABLED IN NEXT VERSION, ITS NOT OF MUCH IMPORTANCE
+                            THOUGH... JUST A LIST OF FEATURES IN THIS THEME -->
+                            <!--li data-link="none" class='dropper'>
+                            <figure><i class='icon-gift'></i> <div class='menuText'>Specials&nbsp;›</div></figure>
+                            <ul class='subSide'>
+                            <li data-target='quicksand'><i class='icon-star-empty'></i> <div class='menuText'>Quicksand</div></li>
+                            <li data-target='boxwidget'><i class='icon-star-empty'></i> <div class='menuText'>Box-Widget</div></li>
+                            <li data-target='googlecharts'><i class='icon-star-empty'></i> <div class='menuText'>Google Charts</div></li>
+                            <li data-target='flotr2charts'><i class='icon-star-empty'></i> <div class='menuText'>Flotr2 Charts</div></li>
+                            <li data-target='scrolleffects'><i class='icon-star-empty'></i> <div class='menuText'>Scroll Effects</div></li>
+                            <li data-target='additionalfeatures'><i class='icon-star-empty'></i> <div class='menuText'>Additional Features</div></li>
+                            </ul>
+                            </li>		
+                            <hr/-->
+                            <li data-link="members" class="">
+                                <figure>
+                                    <i class="icon-new-group">
+                                    </i>
+                                    <div class="menuText">
+                                        Members
+                                    </div>
+                                </figure>
+                            </li>
+                            <li data-link="contact">
+                                <figure>
+                                    <i class="icon-envelope">
+                                    </i>
+                                    <div class="menuText">
+                                        Contact
+                                    </div>
+                                </figure>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="span10 content borBox" style="height: 417px; display: block;">
+                        <div class="page-header">
+                            <h1 class="hBig">
+                                Minimal Virgin
+                                <small>
+                                    Twitter's Bootstrap Minimal and Virgin
+                                </small>
+                            </h1>
+                        </div>
+                        <div class="row-fluid boxMenu">
+                            <div class="span3 box" data-target="jobs">
+                                <h1>
+                                    Website Design
+                                </h1>
+                            </div>
+                            <div class="span3 box" data-target="internships">
+                                <h1>
+                                    Logo Design
+                                </h1>
+                            </div>
+                            <div class="span3 box" data-target="scholarships">
+                                <h1>
+                                    Stationary Design
+                                </h1>
+                            </div>
+                            <div class="span3 box" data-target="books">
+                                <h1>
+                                    Graphic Design
+                                </h1>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row-fluid boxMenu">
+                            <div class="span3 box" data-target="journals">
+                                <h1>
+                                    Ruby Works
+                                </h1>
+                            </div>
+                            <div class="span3 box">
+                                <h1>
+                                    HTML5 Apps
+                                </h1>
+                            </div>
+                            <div class="span3 box">
+                                <h1>
+                                    Node.js Works
+                                </h1>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row-fluid boxMenu">
+                            <div class="span3 box">
+                                <h1>
+                                    Contact Us
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer style="box-shadow: rgba(0, 0, 0, 0.0588235) 0px -1px 5px 0px;">
+                <div class="container-fluid" id="footMain">
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <div class="pull-left">
+                                <h6>
+                                    Press ` or tilde key to access command line
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="pull-right">
+                                <h6>
+                                    Company Name Here
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- ##### MODALS #####- -->
+        <div class="modal fade hide" id="thisModal">
+        </div>
+        <!-- ### BACKGROUND DIV -->
+        <div class="bg">
+        </div>
+        <div class="commandWindow hide">
+            <div class="commandWindow-inner">
+                <h2 class="hBig">
+                    CommandLine
+                </h2>
+                <br>
+                <div class="form sharp form-horizontal">
+                    <div class="input-append row-fluid">
+                        <input class="sharp span9" id="commandInput" placeholder="Enter Command"
+                        type="text">
+                        <button class="btn btn-info">
+                            Go
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="alert fade in">
+                    <a class="close" data-dismiss="alert">
+                        ×
+                    </a>
+                    <p>
+                        Type
+                        <code>
+                            goto("dashboard") or goto("portfolio")
+                        </code>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
