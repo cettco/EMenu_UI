@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="../assets/7140b261/jui/css/base/jquery-ui.css"
+        />
+        <link rel="stylesheet" type="text/css" href="../assets/fd2e02dc/jquery-ui-timepicker-addon.css"
+        />
+        <script type="text/javascript" src="../assets/7140b261/jquery.min.js">
+        </script>
+        <script type="text/javascript" src="../assets/7140b261/jquery.yiiactiveform.js">
+        </script>
+        <title>
+            EMenu - 新建店铺
+        </title>
+        <meta name="description" content="EMenu后台管理系统" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"
+        />
+        <!-- basic styles -->
+        <link href="../ace/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../ace/css/font-awesome.min.css" />
+        <!--[if IE 7]>
+            <link rel="stylesheet" href="../ace/css/font-awesome-ie7.min.css" />
+        <![endif]-->
+        <!-- page specific plugin styles -->
+        <link rel="stylesheet" href="../ace/css/jquery-ui-1.10.3.full.min.css"
+        />
+        <link rel="stylesheet" href="../ace/css/chosen.css" />
+        <link rel="stylesheet" href="../ace/css/datepicker.css" />
+        <link rel="stylesheet" href="../ace/css/bootstrap-timepicker.css" />
+        <link rel="stylesheet" href="../ace/css/daterangepicker.css" />
+        <link rel="stylesheet" href="../ace/css/colorpicker.css" />
+        <!-- fonts -->
+        <link rel="stylesheet" href="../ace/css/ace-fonts.css" />
+        <!-- ace styles -->
+        <link rel="stylesheet" href="../ace/css/ace.min.css" />
+        <link rel="stylesheet" href="../ace/css/ace-rtl.min.css" />
+        <link rel="stylesheet" href="../ace/css/ace-skins.min.css" />
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="../ace/css/ace-ie.min.css" />
+        <![endif]-->
+        <!-- inline styles related to this page -->
+        <!-- ace settings handler -->
+        <script src="../ace/js/ace-extra.min.js">
+        </script>
+        <script src="../ace/js/bootbox.min.js">
+        </script>
+        <script src="../ace/js/jquery.sparkline.min.js">
+        </script>
+        <script>
+            function newalert(title) {
+                bootbox.dialog({
+                    message: title,
+                    buttons: {
+                        "success": {
+                            "label": "确认",
+                            "className": "btn-sm btn-primary"
+                        }
+                    }
+                });
+            }
+        </script>
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media
+        queries -->
+        <!--[if lt IE 9]>
+            <script src="../ace/js/html5shiv.js">
+            </script>
+            <script src="../ace/js/respond.min.js">
+            </script>
+        <![endif]-->
+    </head>
+    
+    <body>
+        <div class="navbar navbar-default" id="navbar">
+            <script type="text/javascript">
+                try {
+                    ace.settings.check('navbar', 'fixed')
+                } catch(e) {}
+            </script>
+            <div class="navbar-container" id="navbar-container">
+                <div class="navbar-header pull-left">
+                    <a href="../index.html" class="navbar-brand" style="padding: 5px 0 0 0;">
+                        <small>
+                            <img src="../img/logo_38.png">
+                            EMenu后台管理系统
+                        </small>
+                    </a>
+                    <!-- /.brand -->
+                </div>
+                <!-- /.navbar-header -->
+                <div class="navbar-header pull-right" role="navigation">
+                    <ul class="nav ace-nav">
+                        <li class="red">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="icon-bell-alt icon-animated-bell">
+                                </i>
+                                <span class="badge badge-important oatnum">
+                                    0
+                                </span>
+                            </a>
+                            <ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                                <li class="dropdown-header">
+                                    <i class="icon-warning-sign">
+                                    </i>
+                                    <span class="oatnum">
+                                        0
+                                    </span>
+                                    笔未处理订单
+                                </li>
+                                <li>
+                                    <a href="../order/viewopen.html">
+                                        查看全部未处理订单
+                                        <i class="icon-arrow-right">
+                                        </i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="green">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="icon-envelope icon-animated-vertical">
+                                </i>
+                                <span class="badge badge-success">
+                                    0
+                                </span>
+                            </a>
+                            <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                                <li class="dropdown-header">
+                                    <i class="icon-envelope-alt">
+                                    </i>
+                                    0条未读消息
+                                </li>
+                                <li>
+                                    <a href="../message/index.html">
+                                        有
+                                        <span style="color:red;">
+                                            0
+                                        </span>
+                                        条新留言
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../message/comment.html">
+                                        有
+                                        <span style="color:red;">
+                                            0
+                                        </span>
+                                        条新评论
+                                    </a>
+                                </li>
+                                <li>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="light-blue">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                <img class="nav-user-photo" src="../ace/avatars/user.jpg" alt="Jason's Photo"
+                                />
+                                <span class="user-info">
+                                    <small>
+                                        欢迎您，
+                                    </small>
+                                    QiangLee
+                                </span>
+                                <i class="icon-caret-down">
+                                </i>
+                            </a>
+                            <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                <li>
+                                    <a href="../config/account.html">
+                                        <i class="icon-user">
+                                        </i>
+                                        帐号设置
+                                    </a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="../logout.html">
+                                        <i class="icon-off">
+                                        </i>
+                                        退出
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- /.ace-nav -->
+                </div>
+                <!-- /.navbar-header -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <div class="main-container" id="main-container">
+            <script type="text/javascript">
+                try {
+                    ace.settings.check('main-container', 'fixed')
+                } catch(e) {}
+            </script>
+            <div class="main-container-inner">
+                <a class="menu-toggler" id="menu-toggler" href="#">
+                    <span class="menu-text">
+                    </span>
+                </a>
+                <div class="sidebar" id="sidebar">
+                    <script type="text/javascript">
+                        try {
+                            ace.settings.check('sidebar', 'fixed')
+                        } catch(e) {}
+                    </script>
+                    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                            <a class="btn btn-success" href="../statistics/chartrevenue.html">
+                                <i class="icon-bar-chart">
+                                </i>
+                            </a>
+                            <a class="btn btn-info" href="../order/viewopen.html">
+                                <i class="icon-shopping-cart">
+                                </i>
+                            </a>
+                            <a class="btn btn-warning" href="../shop/index.html">
+                                <i class="icon-desktop">
+                                </i>
+                            </a>
+                            <a class="btn btn-danger" href="../pay/index.html">
+                                <i class="icon-smile">
+                                </i>
+                            </a>
+                        </div>
+                        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                            <span class="btn btn-success">
+                            </span>
+                            <span class="btn btn-info">
+                            </span>
+                            <span class="btn btn-warning">
+                            </span>
+                            <span class="btn btn-danger">
+                            </span>
+                        </div>
+                    </div>
+                    <!-- #sidebar-shortcuts -->
+                    <ul class="nav nav-list">
+                        <li>
+                            <a href="./home/index.html">
+                                <i class="icon-home">
+                                </i>
+                                <span class="menu-text">
+                                    首页
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../statistics/chartrevenue.html">
+                                <i class="icon-bar-chart">
+                                </i>
+                                <span class="menu-text">
+                                    统计
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-shopping-cart">
+                                </i>
+                                <span class="menu-text">
+                                    订单
+                                </span>
+                                <b class="arrow icon-angle-down">
+                                </b>
+                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="../order/viewopen.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        订单管理
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../order/ordersearch.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        订单搜索
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../order/exportorder.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        导出订单
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="active open">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-desktop">
+                                </i>
+                                <span class="menu-text">
+                                    店铺
+                                </span>
+                                <b class="arrow icon-angle-down">
+                                </b>
+                            </a>
+                            <ul class="submenu">
+                                <li class="active">
+                                    <a href="../shop/index.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        店铺信息
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../shoptype/index.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        餐桌管理
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../printer/index.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        打印机设置
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../printer/lewaimaiprinterindex.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        打印机管理
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-comment">
+                                </i>
+                                <span class="menu-text">
+                                    顾客交流
+                                </span>
+                                <b class="arrow icon-angle-down">
+                                </b>
+                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="../message/index.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        店铺留言
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../message/comment.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        店铺评论
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-gear">
+                                </i>
+                                <span class="menu-text">
+                                    设置
+                                </span>
+                                <b class="arrow icon-angle-down">
+                                </b>
+                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="../config/account.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        帐号设置
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../config/employee.html">
+                                        <i class="icon-double-angle-right">
+                                        </i>
+                                        员工账号
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- /.nav-list -->
+                    <div class="sidebar-collapse" id="sidebar-collapse">
+                        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left"
+                        data-icon2="icon-double-angle-right">
+                        </i>
+                    </div>
+                    <script type="text/javascript">
+                        try {
+                            ace.settings.check('sidebar', 'collapsed')
+                        } catch(e) {}
+                    </script>
+                </div>
+                <div class="main-content">
+                    <div class="breadcrumbs" id="breadcrumbs">
+                        <script type="text/javascript">
+                            try {
+                                ace.settings.check('breadcrumbs', 'fixed')
+                            } catch(e) {}
+                        </script>
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-desktop desktop-icon">
+                                </i>
+                                <a href="../shop/index.html">
+                                    店铺
+                                </a>
+                            </li>
+                            <li class="active">
+                                新建店铺
+                            </li>
+                        </ul>
+                        <!-- .breadcrumb -->
+                    </div>
+                    <div class="page-content">
+                        <script>
+                            function preview(input) {
+                                if (input.files && input.files[0]) {
+                                    var reader = new FileReader();
+                                    reader.onload = function(e) {
+                                        $('#shopimage').attr('src', e.target.result);
+                                    }
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
+                            function check(obj) {
+                                var length = $('.paycheck:checked').length;
+                                if (length == 0) {
+                                    $(obj).attr('checked', 'checked');
+                                    bootbox.alert('最少要选择一种支付方式');
+                                }
+                            }
+                        </script>
+                        <script>
+                            $(function() {
+                                $('.deletefield').live('click',
+                                function() {
+                                    $(this).parent('.fieldblock').remove();
+                                });
+                                $('.addxxfield').live('click',
+                                function() {
+                                    if ($('.deletefield').length == 12) {
+                                        bootbox.alert('最多只能设置10个预设选项');
+                                        return false;
+                                    }
+                                    var html = $('#hidexxfield').html();
+                                    $('#fieldcontent').append(html);
+                                    $('.save_field').show();
+                                });
+                                $('.addtxfield').live('click',
+                                function() {
+                                    if ($('.deletefield').length == 12) {
+                                        bootbox.alert('最多只能设置10个预设选项');
+                                        return false;
+                                    }
+                                    var html = $('#hidetxfield').html();
+                                    $('#fieldcontent').append(html);
+                                    $('.save_field').show();
+                                });
+                                $('#yw12').live('click',
+                                function() {
+                                    var obj = $('#fieldcontent .fieldblock');
+                                    var length = obj.length;
+                                    if (length > 0) {
+                                        for (var i = 0; i < length; i++) {
+                                            var name = $(obj[i]).children('.name').val();
+                                            var content = $(obj[i]).children('.content').val();
+                                            var type = $(obj[i]).children('.type').val();
+                                            if (name == '') {
+                                                bootbox.alert('预设选项字段名不能为空');
+                                                $(obj[i]).children('.name').focus();
+                                                return false;
+                                            }
+                                            if (type == 1 && content == '') {
+                                                bootbox.alert('选项字段，选项值不能为空');
+                                                $(obj[i]).children('.content').focus();
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                });
+                            });
+                        </script>
+                        <style>
+                            .clear{ clear:both; } .addfield{margin-top:-10px;width:120px;height:30px;background:#27B3EF;line-height:30px;color:#ffffff;font-weight:bold;text-align:center;font-size:16px;cursor:pointer;float:left;margin-right:10px;}
+                            #filecontent{width:1000px;height:auto;margin-top:10px;} .xxfield,.txfield{width:1000px;heigth:40px;background:#f5f5f5;line-height:40px;border:1px
+                            solid #eeeeee;margin-top:10px;} .deletefield{width:40px;height:40px;float:right;background:#eeeeee;color:#FF0000;font-weight:bold;line-height:40px;text-align:center;cursor:pointer;}
+                            .save_field{margin-top:10px;width:60px;height:30px;background:#61b509;line-height:30px;color:#ffffff;font-weight:bold;text-align:center;font-size:16px;cursor:pointer;}
+                        </style>
+                        <!-- <div style="position:fixed;width:830px;height:650px;z-index:99999;margin:auto;left:0;
+                        right:0; top:0; bottom:0;display:none;background:#eeeeee;" id="picwindow">
+                        <div style="width:830px;height:30px;background:#aaaaaa;"><span style="color:#ffffff;float:right;display:block;width:50px;height:30px;line-height:30px;text-align:center;cursor:pointer" onclick="openpicwindow();">关闭</span></div>
+                        <iframe src="../shop/imgareaselect.html" style="width:830px;height:620px;border:0px;" scrolling="no">
+                        </iframe>
+                        </div> -->
+                        <div id="hidecontent" style="display:none;">
+                            <div id="hidexxfield">
+                                <div class="xxfield fieldblock">
+                                    (
+                                    <span style="font-weight:bold;">
+                                        选项字段
+                                    </span>
+                                    )&nbsp;&nbsp;字段名:
+                                    <input type="text" style="width:80px;" class="name" name="field[name][]"
+                                    ../>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;选项值:
+                                    <input type="text" style="width:300px;" class="content" name="field[content][]"
+                                    ../>
+                                    <input type="hidden" class="type" name="field[type][]" value="1" />
+                                    <div class="deletefield" title="删除选项字段">
+                                        删除
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="hidetxfield">
+                                <div class="txfield fieldblock">
+                                    (
+                                    <span style="font-weight:bold;">
+                                        填写字段
+                                    </span>
+                                    )&nbsp;&nbsp;字段名:
+                                    <input type="text" style="width:80px;" class="name" name="field[name][]"
+                                    ../>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;提示语:
+                                    <input type="text" style="width:300px;" class="content" name="field[content][]"
+                                    ../>
+                                    <input type="hidden" class="type" name="field[type][]" value="2" />
+                                    <div class="deletefield" title="删除选项字段">
+                                        删除
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <style>
+                            input[type=checkbox].ace.ace-switch.ace-switch-5+.lbl::before { content:
+                            "开启a0\a0\a0\a0\a0关闭"; }
+                        </style>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form enctype="multipart/form-data" class="form-horizontal" id="shop-form"
+                                action="../shop/create.html" method="post">
+                                    <div class="alert alert-danger" id="shop-form_es_" style="display:none">
+                                        <p>
+                                            请更正下列输入错误:
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                dummy
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <input name="oldAdminId" value="8011" type="hidden">
+                                    <div class="tabbable">
+                                        <ul class="nav nav-tabs" id="myTab">
+                                            <li class="active">
+                                                <a data-toggle="tab" href="#basicinfo">
+                                                    基本信息
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a data-toggle="tab" href="#printershopimg">
+                                                    店铺图片
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div id="basicinfo" class="tab-pane active">
+                                                <div class="form-group">
+                                                    <label class="col-sm-1">
+                                                        <label for="Config_tag">
+                                                            编号
+                                                        </label>
+                                                    </label>
+                                                    <input class="col-sm-2" name="Config[tag]" id="Config_tag" type="text"
+                                                    value="0" />
+                                                    <span class="help-inline col-xs-12 col-sm-7">
+                                                        <!-- <span class="icon-info-sign bigger-150" data-rel="tooltip" data-placement="left"
+                                                        title="决定展示顺序，编号越小越靠前"></span> -->
+                                                        <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="bottom"
+                                                        data-content="决定展示顺序，编号越小越靠前" title="" data-original-title="编号说明">
+                                                            <span class="icon-info bigger-120">
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-1">
+                                                        <label for="Config_shopname">
+                                                            店铺名称
+                                                        </label>
+                                                    </label>
+                                                    <input class="col-sm-2" size="20" maxlength="20" name="Config[shopname]"
+                                                    id="Config_shopname" type="text" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-1">
+                                                        <label for="Config_type_id">
+                                                            店铺分类
+                                                        </label>
+                                                    </label>
+                                                    <select class="col-sm-2" name="Config[type_id]" id="Config_type_id">
+                                                        <option value="7766">
+                                                            hhh
+                                                        </option>
+                                                        <option value="0" selected="selected">
+                                                            默认分类
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-1">
+                                                        <label for="Config_orderphone">
+                                                            联系电话
+                                                        </label>
+                                                    </label>
+                                                    <input class="col-sm-2" name="Config[orderphone]" id="Config_orderphone"
+                                                    type="text" maxlength="20" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-1">
+                                                        <label for="Config_shopaddress">
+                                                            店铺地址
+                                                        </label>
+                                                    </label>
+                                                    <textarea class="col-sm-3" rows="5" name="Config[shopaddress]" id="Config_shopaddress">
+                                                    </textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-1">
+                                                        <label for="Config_shopdes">
+                                                            店铺描述
+                                                        </label>
+                                                    </label>
+                                                    <textarea class="col-sm-3" rows="5" name="Config[shopdes]" id="Config_shopdes">
+                                                    </textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-1">
+                                                        <label for="Config_coordinate_x">
+                                                            店铺纬度
+                                                        </label>
+                                                    </label>
+                                                    <input class="col-sm-2" name="Config[coordinate_x]" id="Config_coordinate_x"
+                                                    type="text" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-1">
+                                                        <label for="Config_coordinate_y">
+                                                            店铺经度
+                                                        </label>
+                                                    </label>
+                                                    <input class="col-sm-2" name="Config[coordinate_y]" id="Config_coordinate_y"
+                                                    type="text" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-1">
+                                                        <label for="Config_order_prefix">
+                                                            订单编号前缀
+                                                        </label>
+                                                    </label>
+                                                    <input class="col-sm-2" name="Config[order_prefix]" id="Config_order_prefix"
+                                                    type="text" maxlength="20" />
+                                                </div>
+                                                <script>
+                                                    function ViewCoordinateCourse() {
+                                                        window.open("../page/coordinatehelpinfo.html");
+                                                    }
+                                                </script>
+                                                <div class="btn btn-sm btn-danger" onclick="ViewCoordinateCourse()">
+                                                    经纬度设置教程
+                                                </div>
+                                            </div>
+                                            <div class="clearfix" style="position:absolute;bottom:-100px;left:30%;margin-bottom:40px;">
+                                                <div class="col-md-offset-3 col-md-9">
+                                                    <button class="btn btn-info" type="submit">
+                                                        <i class="icon-ok bigger-110">
+                                                        </i>
+                                                        保存
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="printershopimg" class="tab-pane">
+                                                <script type="text/javascript" src="../js/jquery.form.js">
+                                                </script>
+                                                <script>
+                                                    $(function() {
+                                                        $('#picselect').live('change',
+                                                        function() {
+                                                            var length = $('.shopimgone').length;
+                                                            if (length >= 5) {
+                                                                bootbox.alert('最多只能上传5张图片');
+                                                                return false;
+                                                            }
+                                                            $(this).parent().ajaxSubmit(function(data) {
+                                                                console.log(data);
+                                                                if (data == 'suffix') {
+                                                                    bootbox.alert('格式不对');
+                                                                } else if (data == 'size') {
+                                                                    bootbox.alert('最大不能超过500K');
+                                                                } else if (data == 'error') {
+                                                                    bootbox.alert('图片上传有误，请重新选择');
+                                                                } else if (data.length < 100) {
+                                                                    addshopimg('http://img.lewaimai.com' + data, data);
+                                                                    $('#picselect').val('');
+                                                                } else {
+                                                                    bootbox.alert('图片上传有误，请重新上传');
+                                                                }
+                                                            });
+                                                        });
+
+                                                        $('.deletefather').live('mouseover',
+                                                        function() {
+                                                            $(this).children('.deletebody').show();
+                                                        });
+                                                        $('.deletefather').live('mouseout',
+                                                        function() {
+                                                            $(this).children('.deletebody').hide();
+                                                        });
+                                                    }) function showselectimg() {}
+                                                    // 图片剪切缩略
+                                                    function preview2(img, selection) {
+                                                        var width = parseFloat($('#temppic').css('width'));
+                                                        var height = parseFloat($('#temppic').css('height'));
+                                                        var scaleX = 360 / selection.width;
+                                                        var scaleY = 200 / selection.height;
+                                                        $('#imgselect').css({
+                                                            width: Math.round(scaleX * width),
+                                                            height: Math.round(scaleY * height),
+                                                            marginLeft: -Math.round(scaleX * selection.x1),
+                                                            marginTop: -Math.round(scaleY * selection.y1)
+                                                        });
+                                                        $('#x').val(selection.x1);
+                                                        $('#y').val(selection.y1);
+                                                        $('#x2').val(selection.x2);
+                                                        $('#y2').val(selection.y2);
+                                                        $('#cwidth').val(width);
+                                                        $('#isimgchange').val('yes');
+                                                    }
+                                                    function closepicwindow() {
+                                                        $('#picwindow', window.parent.document).hide();
+                                                    }
+                                                    var shoppictage = 50;
+                                                    function deleteshopimg(id, obj) {
+                                                        $(obj).parent('.shopimgone').remove();
+                                                        $('#' + id).remove();
+                                                    }
+                                                    var zzsc = 'no' //正在上传
+                                                    function addimgselect() {
+                                                        if (zzsc == 'yes') {
+                                                            return false;
+                                                        } else {
+                                                            zzsc = 'yes';
+                                                        }
+                                                        var length = $('.shopimgone').length;
+                                                        if (length >= 5) {
+                                                            bootbox.alert('最多只能上传5张图片');
+                                                            zzsc = 'no';
+                                                            return false;
+                                                        }
+                                                        var url = $('#imgurl').val();
+                                                        var imgurl = $('#imgurl').val();
+                                                        if (imgurl == '') {
+                                                            zzsc = 'no';
+                                                            bootbox.alert('请选择图片');
+                                                            return false;
+                                                        }
+                                                        var isimgchange = $('#isimgchange').val();
+                                                        if (isimgchange == 'no') {
+                                                            zzsc = 'no';
+                                                            bootbox.alert('请选择剪切区域，试试在图片里拖动鼠标');
+                                                            return false;
+                                                        }
+                                                        var option = {
+                                                            type: "post",
+                                                            dataType: 'json',
+                                                            success: function(data) {
+                                                                console.log(data);
+                                                                if (data['status'] == 'success') {
+                                                                    bootbox.alert('保存成功');
+                                                                    addshopimg(data['url'][0], data['url'][1]);
+                                                                } else {
+                                                                    bootbox.alert('剪切失败，请再试一次');
+                                                                }
+                                                                zzsc = 'no';
+                                                                $('#imgischange').val('no');
+                                                            }
+                                                        };
+                                                        $('#imgselectofm').ajaxSubmit(option);
+                                                    }
+                                                    function addshopimg(url, url1) {
+                                                        var string = '';
+                                                        string += '<div style="position:relative;float:left;margin-left:5px;margin-bottom:5px;width:180px;height:auto;background:#cccccc;" class="shopimgone deletefather">';
+                                                        string += '<img src="' + url + '" style="width:180px;height:100px;"../>';
+                                                        string += '<div style="position:absolute;top:0;left:0;width:180px;height:auto;line-height:100px;text-align:center;background:#eeeeee;display:none;top:0px;left:0px;cursor:pointer;" onclick=\'deleteshopimg("inputimgid' + shoppictage + '",this);\' class="deletebody">';
+                                                        string += '删除';
+                                                        string += '</div>';
+                                                        string += '</div>';
+                                                        $('#imglist').append(string);
+                                                        var string1 = '<input id="inputimgid' + shoppictage + '" name="shopimage[]" value="' + url1 + '"../>';
+                                                        $('#inputimglist').append(string1);
+                                                        shoppictage++;
+                                                    }
+                                                </script>
+                                                <div class="alert alert-block alert-success">
+                                                    图片最大允许上传500K,支持jpg、png、jpeg格式的图片,为了达到最佳效果，建议上传360*200的图片
+                                                </div>
+                                                <div style="width:300px;height:50px;border-right:2px solid #ffffff;padding:0px;float:left;margin:0px;overflow:hidden;">
+                                                    <button class="btn-success btn" onclick="$('#picselect').trigger('click');"
+                                                    type="button">
+                                                        上传图片
+                                                    </button>
+                                                    <div style="width:300px;display:none;">
+                                                        <form action="../autoreply/uploadtemp.html" enctype="multipart/form-data"
+                                                        method="post">
+                                                            图片:
+                                                            <input type="file" name="surface" id="picselect" ../>
+                                                            <input type="hidden" name="imgmaxsize" value="512000" ../>
+                                                            <input type="hidden" name="type" value="shop" ../>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div style="width:100%;height:auto;float:left;margin:0px;">
+                                                    <div style="margin-top:20px;height:20px;width:100%;">
+                                                        <div style="width:100%;">
+                                                            当前店铺图片(最多5张)
+                                                        </div>
+                                                        <div style="width:100%;height:auto;" id="imglist">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="clear:both;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <script src="../public/fck/editor/kindeditor.js">
+                        </script>
+                        <script>
+                            KindEditor.ready(function(K) {
+                                editor = K.create("#Config_notice, #Config_ordersuccess", {
+                                    width: '30%',
+                                    resizeType: 1,
+                                    allowPreviewEmoticons: false,
+                                    allowImageUpload: true,
+                                    filterMode: true,
+                                    items: ['fontname', 'fontsize', 'forecolor', '|', 'bold', 'italic', 'underline', 'removeformat', '|', 'insertorderedlist', 'insertunorderedlist', '|', 'emoticons']
+                                });
+                            });
+                        </script>
+                        <script>
+                            jQuery(function($) {
+                                //$('.icon-info-sign').tooltip();
+                                $('[data-rel="popover"]').popover();
+                            })
+                        </script>
+                        <div id="orderAlert" style="position: fixed;z-index:999999;bottom:5px;right:5px;background:#e5e5e5;display: none;">
+                            <div style="text-align: center;margin-top: 10px;font-size: 20px;color: red;">
+                                <b>
+                                    新订单来啦!
+                                </b>
+                                <a class="oaright" href="javascript:closeoa()">
+                                    [关闭]
+                                </a>
+                            </div>
+                            <div style="margin: 20px 30px 5px 30px;cursor: pointer;" onclick="tourl()">
+                                您好：有
+                                <span class="label label-info" id="oanum">
+                                </span>
+                                笔新订单来了！
+                            </div>
+                            <div style="margin: 5px 30px 5px 30px;cursor: pointer;" onclick="tourl()">
+                                截止目前，一共有
+                                <span class="label label-info" id="oatnum">
+                                </span>
+                                笔订单未处理
+                            </div>
+                            <div class="oaright" style="bottom: 10px;margin: 5px 30px 5px 30px;">
+                                时间：
+                                <a id="oatime" style="text-decoration: none;">
+                                </a>
+                            </div>
+                        </div>
+                        <div style="position: fixed;top: -9999px;right: -9999px;display:none;"
+                        id="soundsw">
+                        </div>
+                    </div>
+                    <!-- /.page-content -->
+                </div>
+                <!-- /.main-content -->
+            </div>
+            <!-- /.main-container-inner -->
+            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+                <i class="icon-double-angle-up icon-only bigger-110">
+                </i>
+            </a>
+        </div>
+        <!-- /.main-container -->
+        <!-- basic scripts -->
+        <!--[if !IE]> -->
+            <script type="text/javascript">
+                window.jQuery || document.write("<script src='/ace/js/jquery-2.0.3.min.js'>" + "<" + "../script>");
+            </script>
+            <!-- <![endif]-->
+            <!--[if IE]>
+                <script type="text/javascript">
+                    window.jQuery || document.write("<script src='/ace/js/jquery-1.10.2.min.js'>" + "<" + "../script>");
+                </script>
+            <![endif]-->
+            <script type="text/javascript">
+                if ("ontouchend" in document) document.write("<script src='/ace/js/jquery.mobile.custom.min.js'>" + "<" + "../script>");
+            </script>
+            <script src="../ace/js/bootstrap.min.js">
+            </script>
+            <script src="../ace/js/typeahead-bs2.min.js">
+            </script>
+            <!-- page specific plugin scripts -->
+            <!--[if lte IE 8]>
+                <script src="../ace/js/excanvas.min.js">
+                </script>
+            <![endif]-->
+            <script src="../ace/js/jquery-ui-1.10.3.full.min.js">
+            </script>
+            <script src="../ace/js/jquery.ui.touch-punch.min.js">
+            </script>
+            <script src="../ace/js/jquery.slimscroll.min.js">
+            </script>
+            <script src="../ace/js/jquery.easy-pie-chart.min.js">
+            </script>
+            <script src="../ace/js/jquery.sparkline.min.js">
+            </script>
+            <script src="../ace/js/flot/jquery.flot.min.js">
+            </script>
+            <script src="../ace/js/flot/jquery.flot.pie.min.js">
+            </script>
+            <script src="../ace/js/flot/jquery.flot.resize.min.js">
+            </script>
+            <!-- ace scripts -->
+            <script src="../ace/js/ace-elements.min.js">
+            </script>
+            <script src="../ace/js/ace.min.js">
+            </script>
+            <script>
+                function alertshow(content) {
+                    $('#popalertwindowcontent').html(content);
+                    $('#popalertwindow').show();
+                }
+                $(function() {
+                    showalert();
+                    window.setInterval(showalert, 30000);
+                })
+
+                function closeoa() {
+                    $("#orderAlert").slideUp();
+                    stopFlash();
+                }
+
+                function tourl() {
+                    location.href = "../order/viewopen.html";
+                }
+
+                function showalert() {
+                    var initTime = "1400073745";
+                    var url = "../order/getneworder.html" + "?initTime=" + initTime;
+                    $.get(url,
+                    function(data) {
+                        var list = data.split(":::");
+                        $("#oantnum").html(list[1]);
+                        if (list[0] > 0) {
+                            var nowDate = new Date();
+                            var str = nowDate.getFullYear() + "-" + (nowDate.getMonth() + 1) + "-" + nowDate.getDate() + " " + nowDate.getHours() + ":" + nowDate.getMinutes() + ":" + nowDate.getSeconds();
+                            $("#oanum").html(list[0]);
+                            $("#oatnum,.oatnum").html(list[1]);
+                            $("#oatime").html(str);
+                            $("#orderAlert").slideUp();
+                            $("#orderAlert").slideDown();
+                            $("#soundsw").show(1000,
+                            function() {
+                                $("#soundsw").html('<embed src="../music/dingdong.wav" loop="0" autostart="true"></embed>');
+                                $("#soundsw").hide();
+                            });
+                            flashTitle("您有" + list[0] + "笔新订单");
+                        }
+                    });
+                }
+
+                var flashTitlePlayer = {
+                    start: function(msg) {
+                        this.title = document.title;
+                        if (!this.action) {
+                            try {
+                                this.element = document.getElementsByTagName('title')[0];
+                                this.element.innerHTML = this.title;
+                                this.action = function(ttl) {
+                                    this.element.innerHTML = ttl;
+                                };
+                            } catch(e) {
+                                this.action = function(ttl) {
+                                    document.title = ttl;
+                                }
+                                delete this.element;
+                            }
+                            this.toggleTitle = function() {
+                                this.action('【' + this.messages[this.index = this.index == 0 ? 1 : 0] + '】EMenu');
+                            };
+                        }
+                        this.messages = [msg];
+                        var n = msg.length;
+                        var s = '';
+                        if (this.element) {
+                            var num = msg.match(/\w/g);
+                            if (num != null) {
+                                var n2 = num.length;
+                                n -= n2;
+                                while (n2 > 0) {
+                                    s += " ";
+                                    n2--;
+                                }
+                            }
+                        }
+                        while (n > 0) {
+                            s += '　';
+                            n--;
+                        };
+                        this.messages.push(s);
+                        this.index = 0;
+                        this.timer = setInterval(function() {
+                            flashTitlePlayer.toggleTitle();
+                        },
+                        2000);
+                    },
+                    stop: function() {
+                        if (this.timer) {
+                            clearInterval(this.timer);
+                            this.action(this.title);
+                            delete this.timer;
+                            delete this.messages;
+                        }
+                    }
+                };
+                function flashTitle(msg) {
+                    flashTitlePlayer.start(msg);
+                }
+                function stopFlash() {
+                    flashTitlePlayer.stop();
+                }
+            </script>
+            <div style="position:fixed;width:100%;height:100%;top:0px;left:0px;display:none;"
+            id="popalertwindow">
+                <div style="width:100%;height:100%;background:#eeeeee;filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity: 0.5;opacity: 0.5;position: absolute;z-index:9999;">
+                </div>
+                <div style="position:relative;width:500px;height:200px;margin:200px auto;filter:alpha(opacity=100);-moz-opacity:1;-khtml-opacity: 1;opacity: 1;z-index:10000;background:#ffffff;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;-webkit-box-shadow: #666 0px 0px 10px;-moz-box-shadow: #666 0px 0px 10px;box-shadow: #666 0px 0px 10px;">
+                    <div style="height:40px;">
+                    </div>
+                    <div style="width:400px;height:90px;margin:0px auto;color:#999999;text-align:center;font-size:20px;">
+                        <table style="width:400px;height:90px;">
+                            <tr>
+                                <td id="popalertwindowcontent">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="height:20px;">
+                    </div>
+                    <div style="width:80px;height:40px;background:#eeeeee;margin:0 auto;line-height:40px;text-align:center;font-size:20px;border:1px solid #999999;cursor:pointer;"
+                    onclick="$('#popalertwindow').hide();">
+                        确认
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript" src="../assets/7140b261/jui/js/jquery-ui.min.js">
+            </script>
+            <script type="text/javascript" src="../assets/fd2e02dc/jquery-ui-timepicker-addon.min.js">
+            </script>
+            <script type="text/javascript" src="../assets/7140b261/jui/js/jquery-ui-i18n.min.js">
+            </script>
+    </body>
+
+</html>
